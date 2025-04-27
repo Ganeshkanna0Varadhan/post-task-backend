@@ -12,7 +12,7 @@ dotenv.config();
 app.use(express.json());
 app.use(helmet());
 app.use(cors({
-    origin: "*",
+    origin: 'https://post-task-frontend.vercel.app',
     credentials: true
 }));
 app.use(express.urlencoded({ extended: true}));
