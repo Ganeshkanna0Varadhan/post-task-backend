@@ -12,7 +12,8 @@ dotenv.config();
 app.use(express.json());
 app.use(helmet());
 app.use(cors({
-    origin: '*'
+    origin: '*',
+    preflightContinue: false,
 }));
 app.use(express.urlencoded({ extended: true}));
 
