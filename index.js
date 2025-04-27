@@ -12,8 +12,8 @@ dotenv.config();
 app.use(express.json());
 app.use(helmet());
 app.use(cors({
-    origin: '*',
-    preflightContinue: false,
+    origin: ["http://localhost:5000", "https://post-task-frontend.vercel.app"],
+    credentials: true
 }));
 app.use(express.urlencoded({ extended: true}));
 
