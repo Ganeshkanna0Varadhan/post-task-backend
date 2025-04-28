@@ -101,11 +101,14 @@ const getAllPost = async (req, res, next) => {
             throw new CustomError(`Invalid query parameter: ${invalidParams.join(',')}`, 400);  
         }
 
-        const posts = await PostModel.find(query).populate('tags').sort(sortObject).skip(skip).limit(limit);
+        const [posts, totalCount] = await Promise.all([
+            PostModel.find(query).populate('tags').sort(sortObject).skip(skip).limit(limit),
+            PostModel.countDocuments(query)
+        ]) 
 
         return res.status(200).json({
             success: true,
-            totalCount: posts.length,
+            totalCount: totalCount,
             posts,
             page: page,
             limit: limit,
