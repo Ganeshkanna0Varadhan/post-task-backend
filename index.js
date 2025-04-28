@@ -19,7 +19,7 @@ app.use(express.urlencoded({ extended: true}));
 
 app.get('/', (req, res) => {
     res.json({
-        message: 'server is running successfully'
+        message: 'server is running Successfully'
     })
 });
 
